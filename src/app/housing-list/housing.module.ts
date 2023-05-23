@@ -12,7 +12,8 @@ import {HousingListComponent} from './housing-list.component';
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class HousingModule {
 }
