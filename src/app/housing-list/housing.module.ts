@@ -13,7 +13,6 @@ import {HousingListComponent} from './housing-list.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: []
 })
 export class HousingModule {
 }
