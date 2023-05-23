@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {bootstrapApplication, BrowserModule} from '@angular/platform-browser';
+import {HousingModule} from "./housing-list/housing.module";
+import {AppComponent} from "./app.component";
 
-import { AppComponent } from './app.component';
-import { HousingListComponent } from './housing-list/housing-list.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HousingListComponent
-  ],
+  declarations: [],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HousingModule
   ],
   providers: [],
+
   bootstrap: [AppComponent]
+
 })
-export class AppModule { }
+export class AppModule {
+}
