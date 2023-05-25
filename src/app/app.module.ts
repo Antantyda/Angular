@@ -11,6 +11,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
+import { LunchComponent } from './lunch/lunch.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {MatSelectModule} from "@angular/material/select";
     TodolistComponent,
     SelectComponent,
     ExamplesComponent,
+    LunchComponent,
   ],
   imports: [
     FormsModule,
@@ -33,4 +35,5 @@ import {MatSelectModule} from "@angular/material/select";
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }
