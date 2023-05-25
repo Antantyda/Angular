@@ -1,0 +1,52 @@
+<select [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+</select> <br>
+
+<div style="margin-bottom: 10px; margin-top: 10px">
+  <span>Name1</span>
+  <select *ngIf="selectedOption" [(ngModel)]="selectedSubOptionName" (ngModelChange)="onOptionChange()">
+    <option *ngIf="selectedOption === 'option1'" value="subOption1">Option 1</option>
+    <option *ngIf="selectedOption === 'option1'" value="subOption2">Option 2</option>
+    <option *ngIf="selectedOption === 'option1'" value="subOption3">Option 3</option>
+
+    <option *ngIf="selectedOption === 'option2'" value="subOption4">Option 4</option>
+    <option *ngIf="selectedOption === 'option2'" value="subOption5">Option 5</option>
+    <option *ngIf="selectedOption === 'option2'" value="subOption6">Option 6</option>
+
+    <option *ngIf="selectedOption === 'option3'" value="subOption7">Option 7</option>
+    <option *ngIf="selectedOption === 'option3'" value="subOption8">Option 8</option>
+    <option *ngIf="selectedOption === 'option3'" value="subOption9">Option 9</option>
+  </select>
+</div>
+<div style="margin-bottom: 10px">
+  <span>Name2</span>
+  <select *ngIf="selectedOption" [(ngModel)]="selectedSubOptionName2" (ngModelChange)="onOptionChange()">
+    <option *ngIf="selectedOption === 'option1'" value="subOption1">Option 1</option>
+    <option *ngIf="selectedOption === 'option1'" value="subOption2">Option 2</option>
+    <option *ngIf="selectedOption === 'option1'" value="subOption3">Option 3</option>
+
+    <option *ngIf="selectedOption === 'option2'" value="subOption4">Option 4</option>
+    <option *ngIf="selectedOption === 'option2'" value="subOption5">Option 5</option>
+    <option *ngIf="selectedOption === 'option2'" value="subOption6">Option 6</option>
+
+    <option *ngIf="selectedOption === 'option3'" value="subOption7">Option 7</option>
+    <option *ngIf="selectedOption === 'option3'" value="subOption8">Option 8</option>
+    <option *ngIf="selectedOption === 'option3'" value="subOption9">Option 9</option>
+  </select>
+</div>
+
+<div *ngIf="selectedOption">
+  <p>{{ selectedOption }}</p>
+</div>
+
+
+<mat-form-field>
+  <mat-label *ngIf="foods"></mat-label>
+  <mat-select>
+    <mat-option *ngFor="let food of foods" [value]="food.value">
+      {{food.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

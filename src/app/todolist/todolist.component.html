@@ -1,0 +1,33 @@
+
+<div class="container">
+  <form (ngSubmit)="onSubmit(taskForm)"  #taskForm="ngForm">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Task</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter task" ngModel name="task" required><br>
+  </div>
+
+  <button [disabled]="taskForm.invalid" type="submit" class="firstButton">Submit</button>
+</form>
+
+  <hr>
+  <table class="table">
+    <thead>
+    <tr>
+
+      <th scope="col">Task</th>
+      <th scope="col">Completed</th>
+      <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let t of taskArray; index as i">
+      <td>{{t.taskName}}</td>
+      <td><input id="myCheckbox" type="checkbox"></td>
+      <td><button (click)="onDelete(i)">Delete</button></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+
