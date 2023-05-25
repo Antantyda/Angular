@@ -1,0 +1,17 @@
+<form (ngSubmit)="submitForm()">
+  <label>Obědy:</label>
+  <select [(ngModel)]="selectedLunch" name="lunch">
+    <option value="">Vyberte oběd</option>
+    <option value="1">Oběd 1</option>
+    <option value="2">Oběd 2</option>
+    <option value="3">Oběd 3</option>
+  </select>
+  <button type="submit">Odeslat</button>
+  <div *ngIf="selectedLunch">
+    <p>Oběd {{ selectedLunch }}</p>
+    <p>Jídlo: {{ lunchItems[selectedLunch - 1].name }}</p>
+    <p>Value: {{ lunchItems[selectedLunch - 1].value }}</p>
+  </div>
+
+
+</form>
