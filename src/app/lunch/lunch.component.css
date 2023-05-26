@@ -1,0 +1,9 @@
+form {
+  margin: 15px;
+}
+
+.container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
