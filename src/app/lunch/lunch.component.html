@@ -1,56 +1,36 @@
-<form [className]="'container'" (ngSubmit)="submitForm()">
-<mat-form-field>
-  <mat-label>Input</mat-label>
-  <input matInput>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Obed</mat-label>
-  <mat-select [(value)]="selectedLunchValue">
-    <mat-option *ngFor="let lunch of lunchItems" value="{{lunch.value}}">{{lunch.name}}</mat-option>
-  </mat-select>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Textarea</mat-label>
-  <textarea matInput></textarea>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Choose a date</mat-label>
-  <input matInput [matDatepicker]="picker" [formControl]="selectedDate">
-  <mat-hint>MM/DD/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-  <button mat-button type="submit">Odeslat</button>
-</form>
-
-
-<form (ngSubmit)="submitForm()">
-  <label>Obědy:</label>
-  <select [(ngModel)]="selectedLunchValue" name="lunch">
-    <option *ngFor="let lunch of lunchItems" value="{{lunch.value}}">{{lunch.name}}</option>
-  </select>
-  <button type="submit">Odeslat</button>
-
-
-</form>
-
-<form>
-  <select [(ngModel)]="selectedLunchValue" name="lunch">
-    <option value="">Obědy:</option>
-    <option value="1">Oběd 1</option>
-    <option value="2">Oběd 2</option>
-    <option value="3">Oběd 3</option>
-  </select>
-
-  <div *ngIf="selectedLunch !== undefined">
-    <p>Oběd: {{ selectedLunch?.name }}</p>
-    <p>Hodnota: {{ selectedLunch?.value }}</p>
-  </div>
-
-  <button (click)="showResult = true">Potvrdit</button>
-</form>
-
 <div>
   <p>Today is {{today | date:"fullDate"}}</p>
 </div>
-
+<div class="container2">
+  <form [className]="'container'" (ngSubmit)="submitForm()">
+  <mat-form-field>
+    <mat-label>Input</mat-label>
+    <input matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Obed</mat-label>
+    <mat-select [(value)]="selectedLunchValue">
+      <mat-option *ngFor="let lunch of lunchItems" value="{{lunch.value}}">{{lunch.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Notes</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [formControl]="selectedDate">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+    <button mat-button type="submit">Odeslat</button>
+  </form>
+  <div *ngIf="selectedLunch !== undefined">
+    <p>Oběd: {{ selectedLunch?.name }}</p>
+    <p>Value: {{ selectedLunch?.value }}</p>
+  </div><br>
+  <div *ngIf="selectedDate && selectedLunch !== undefined">
+    <p>Vybrané datum:{{selectedDate.value | date:"dd/MM/yyyy"}}</p>
+  </div>
+</div>

@@ -7,8 +7,10 @@ import {FormControl} from "@angular/forms";
   templateUrl: './lunch.component.html',
   styleUrls: ['./lunch.component.css']
 })
-export class LunchComponent implements OnInit{
-  selectedDate = new FormControl
+export class LunchComponent implements OnInit {
+
+
+  selectedDate = new FormControl;
   ngOnInit() {
   }
 
@@ -19,10 +21,10 @@ export class LunchComponent implements OnInit{
   selectedLunch: LunchModel | undefined = undefined;
 
   lunchItems: LunchModel[] = [
-    { name: 'Guláš', value: 1 },
-    { name: 'Svíčková', value: 2 },
-    { name: 'Rajská', value: 3 },
-    { name: "vegan", value: 4}
+    {name: 'Guláš', value: 1},
+    {name: 'Svíčková', value: 2},
+    {name: 'Rajská', value: 3},
+    {name: "vegan", value: 4}
   ];
 
   submitForm() {
@@ -34,7 +36,8 @@ export class LunchComponent implements OnInit{
       if (this.selectedLunch !== undefined) {
         console.log('Oběd:', this.selectedLunch.name);
         console.log('Value:', this.selectedLunch.value);
-        console.log('selected date', this.selectedDate.value)
+        const selectedDateFormatted = new Date(this.selectedDate.value).toLocaleDateString('en-GB');
+        console.log('selected date', selectedDateFormatted)
       } else {
         console.log('obed nenalezen');
       }
