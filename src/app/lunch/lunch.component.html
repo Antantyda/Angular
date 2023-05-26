@@ -3,10 +3,12 @@
 </div>
 <div class="container2">
   <form [className]="'container'" (ngSubmit)="submitForm()">
-  <mat-form-field>
-    <mat-label>Input</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Users</mat-label>
+      <mat-select [(value)]="selectedUserValue">
+        <mat-option *ngFor="let user of usernames" value="{{user.value}}">{{user.username}}</mat-option>
+      </mat-select>
+    </mat-form-field>
   <mat-form-field>
     <mat-label>Obed</mat-label>
     <mat-select [(value)]="selectedLunchValue">
@@ -29,8 +31,12 @@
   <div *ngIf="selectedLunch !== undefined">
     <p>Oběd: {{ selectedLunch?.name }}</p>
     <p>Value: {{ selectedLunch?.value }}</p>
-  </div><br>
+  </div>
   <div *ngIf="selectedDate && selectedLunch !== undefined">
     <p>Vybrané datum:{{selectedDate.value | date:"dd/MM/yyyy"}}</p>
+  </div>
+  <div *ngIf="selectedUser !== undefined">
+    <p>Username: {{selectedUser?.username}}</p>
+    <p>UserValue: {{selectedUser?.value}}</p>
   </div>
 </div>
