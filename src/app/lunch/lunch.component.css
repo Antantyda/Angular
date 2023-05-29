@@ -20,5 +20,32 @@ p {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-left: 6rem;
 
+}
+
+table {
+  border-collapse: collapse;
+  width: 60%;
+  margin-left: 3rem;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.delete-button {
+  background-color: red;
+  width: 85%;
+  font-size: 14px;
 }

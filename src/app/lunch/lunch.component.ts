@@ -10,13 +10,14 @@ import {UserModel} from "./user.model";
 })
 export class LunchComponent implements OnInit {
 
-
   selectedDate = new FormControl;
+  NotesFc = new FormControl();
   ngOnInit() {
   }
+  constructor() {
+  }
 
-  today: number = Date.now();
-  data: any = {};
+  data: any[] = [];
   selectedUserValue: number = -1;
   selectedLunchValue: number = -1;
   selectedLunch: LunchModel | undefined = undefined;
@@ -25,7 +26,8 @@ export class LunchComponent implements OnInit {
   usernames: UserModel[] = [
     {username: "Zbyňa", value: 10},
     {username: "Zbyňa1", value: 11},
-    {username: "Zbyňa2", value: 12}
+    {username: "Zbyňa2", value: 12},
+    {username: "Zbyňa3", value: 13}
   ]
 
   lunchItems: LunchModel[] = [
@@ -35,7 +37,6 @@ export class LunchComponent implements OnInit {
     {name: "vegan", value: 4}
   ];
 
-
   submitForm() {
     console.log('selected', this.selectedLunchValue)
     console.log('lunch items', this.lunchItems)
@@ -44,18 +45,33 @@ export class LunchComponent implements OnInit {
       this.selectedUser = this.usernames.find((o) => o.value === +this.selectedUserValue);
 
       if (this.selectedLunch !== undefined && this.selectedUser !== undefined) {
+        const selectedDateFormatted = new Date(this.selectedDate.value).toLocaleDateString('en-GB');
+        const entry = {
+          user: this.selectedUser.username,
+          lunch: this.selectedLunch.name,
+          date: selectedDateFormatted,
+          notes: this.NotesFc.value,
+        }
+        this.data.push(entry)
         console.log('Oběd:', this.selectedLunch.name);
         console.log('Value:', this.selectedLunch.value);
         console.log('Jméno uživatele:', this.selectedUser.username);
         console.log('Value uživatele:', this.selectedUser.value);
-        const selectedDateFormatted = new Date(this.selectedDate.value).toLocaleDateString('en-GB');
         console.log('selected date', selectedDateFormatted)
-
+        console.log('Poznamky',this.NotesFc.value)
       } else {
         console.log('obed nenalezen');
       }
 
     }
+  }
+
+  onDelete(index: number){
+    this.data.splice(index, 1)
+  }
+
+  clearTable() {
+    this.data = [];
   }
 
 }

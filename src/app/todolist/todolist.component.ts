@@ -9,7 +9,6 @@ import {NgForm} from "@angular/forms";
 export class TodolistComponent implements OnInit {
   taskArray = [{taskName: "task", isCompleted: false}]
   constructor() {
-
   }
 
   onSubmit(form: NgForm) {
