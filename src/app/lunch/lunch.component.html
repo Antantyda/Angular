@@ -1,29 +1,35 @@
 <div class="container2">
   <form [className]="'container'" (ngSubmit)="submitForm()">
+    <label *ngIf="selectedLunch !== undefined && selectedUser !== undefined" style="font-weight: bold; margin-bottom: 10px">Upravte data</label>
     <mat-form-field>
-      <mat-label>Users</mat-label>
+      <mat-label *ngIf="selectedUser == undefined">Users</mat-label>
+      <mat-label *ngIf="selectedLunch !== undefined && selectedUser !== undefined" style="color: #1976d2">Upravte: {{selectedUser?.username}}</mat-label>
       <mat-select [(value)]="selectedUserValue">
         <mat-option *ngFor="let user of usernames" value="{{user.value}}">{{user.username}}</mat-option>
       </mat-select>
     </mat-form-field>
   <mat-form-field>
-    <mat-label>Obed</mat-label>
+    <mat-label *ngIf="selectedLunch == undefined">Obed</mat-label>
+    <mat-label *ngIf="selectedLunch !== undefined && selectedUser !== undefined"  style="color: #1976d2">Upravte: {{selectedLunch?.name }}</mat-label>
     <mat-select [(value)]="selectedLunchValue">
       <mat-option *ngFor="let lunch of lunchItems" value="{{lunch.value}}">{{lunch.name}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Notes</mat-label>
+    <mat-label *ngIf="selectedLunch == undefined">Poznámky</mat-label>
+    <mat-label *ngIf="selectedLunch !== undefined && selectedUser !== undefined" style="color: #1976d2">Upravte:</mat-label>
     <textarea matInput [formControl]="NotesFc"></textarea>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Vyberte datum</mat-label>
+    <mat-label *ngIf="selectedLunch == undefined">Vyberte datum</mat-label>
+    <mat-label *ngIf="selectedLunch !== undefined && selectedUser !== undefined" style="color: #1976d2">Upravte datum</mat-label>
     <input matInput [matDatepicker]="picker" [formControl]="selectedDate">
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-    <button mat-button type="submit" style="margin-bottom: 2rem">Odeslat</button>
+    <button *ngIf="selectedLunch == undefined || selectedUser == undefined" mat-button type="submit" style="margin-bottom: 2rem">Odeslat</button>
+    <button *ngIf="selectedLunch !== undefined && selectedUser !== undefined" mat-button type="submit" style="margin-bottom: 2rem; color: #1976d2">Upravit</button>
   </form>
 </div>
 <table>
@@ -32,17 +38,19 @@
       <th>Jméno</th>
       <th>Oběd</th>
       <th>Datum</th>
-      <th>Pozmánky</th>
+      <th>Poznámky</th>
       <th>Smazat</th>
+      <th>Upravit</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let entry of data; index as i">
+    <tr *ngFor="let entry of data; index as i ">
       <td>{{entry.user}}</td>
       <td>{{entry.lunch}}</td>
       <td>{{entry.date}}</td>
       <td>{{entry.notes}}</td>
       <td><button class="delete-button" type="submit" mat-raised-button color="warn" (click)="onDelete(i)">Odstranit</button></td>
+      <td><button class="delete-button" type="submit" mat-raised-button color="primary" (click)="editRow(i)">Upravit</button></td>
     </tr>
   </tbody>
 </table>
@@ -50,9 +58,6 @@
 <div *ngIf="selectedLunch !== undefined && selectedUser !== undefined">
   <p>Oběd: {{ selectedLunch?.name }}</p>
   <p>Value: {{ selectedLunch?.value }}</p>
-</div>
-<div *ngIf="selectedDate && selectedLunch !== undefined && selectedUser !== undefined">
-  <p>Vybrané datum: {{selectedDate.value | date:"dd/MM/yyyy"}}</p>
 </div>
 <div *ngIf="selectedUser !== undefined && selectedLunch !== undefined">
   <p>Username: {{selectedUser?.username}}</p>
