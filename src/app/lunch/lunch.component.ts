@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {LunchModel} from './lunch.model'
-import {FormControl} from "@angular/forms";
+import {FormControl, NgForm} from "@angular/forms";
 import {UserModel} from "./user.model";
 import {SummaryModel} from "./summary.model";
 
@@ -9,7 +9,7 @@ import {SummaryModel} from "./summary.model";
   templateUrl: './lunch.component.html',
   styleUrls: ['./lunch.component.css']
 })
-export class LunchComponent implements OnInit {
+export class LunchComponent implements OnInit{
 
   selectedDate = new FormControl;
   NotesFc = new FormControl();
@@ -26,6 +26,8 @@ export class LunchComponent implements OnInit {
   selectedLunch: LunchModel | undefined = undefined;
   selectedUser: UserModel | undefined = undefined;
   selectedRowIndex: number | undefined = undefined;
+  isSubmitDisabled: boolean = true;
+
 
   usernames: UserModel[] = [
     {username: "Zbyňa", value: 10},
@@ -62,7 +64,6 @@ export class LunchComponent implements OnInit {
         } else {
           this.data.push(entry)
         }
-
 
         console.log('Oběd:', this.selectedLunch.name);
         console.log('Value:', this.selectedLunch.value);
@@ -105,10 +106,26 @@ export class LunchComponent implements OnInit {
 
   onDelete(index: number) {
     this.data.splice(index, 1)
+    this.selectedUserValue = -1;
+    this.selectedLunchValue = -1;
+    this.selectedLunch = undefined;
+    this.selectedUser = undefined;
+    this.NotesFc.reset();
+    this.selectedDate.reset();
   }
 
   clearTable() {
     this.data = [];
+    this.selectedUserValue = -1;
+    this.selectedLunchValue = -1;
+    this.selectedLunch = undefined;
+    this.selectedUser = undefined;
+    this.NotesFc.reset();
+    this.selectedDate.reset();
+  }
+
+  updateSubmitButtonState() {
+    this.isSubmitDisabled = this.selectedUserValue === -1 || this.selectedLunchValue === -1;
   }
 
 

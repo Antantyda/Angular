@@ -49,3 +49,11 @@ tr:nth-child(even) {
   width: 85%;
   font-size: 14px;
 }
+
+.blue-row {
+ color: #1976d2;
+}
+
+label {
+  font-size: 12px;
+}
