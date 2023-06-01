@@ -19,6 +19,7 @@ import {UserService} from "./lunch/services/user.service";
 import { TableComponent } from './lunch/components/table/table.component';
 import {RouterModule} from "@angular/router";
 import {CdkMenu, CdkMenuItem} from "@angular/cdk/menu";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
@@ -40,12 +41,14 @@ import {CdkMenu, CdkMenuItem} from "@angular/cdk/menu";
     MatButtonModule,
     ReactiveFormsModule,
     MatTableModule,
+    MatSidenavModule,
     RouterModule.forRoot([
       {path: '', component: AppComponent},
       {path: "obed/create", component: LunchComponent}
     ]),
     CdkMenu,
-    CdkMenuItem
+    CdkMenuItem,
+    MatSidenavModule
   ],
   providers: [
     LunchService,

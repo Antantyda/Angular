@@ -1,7 +1,9 @@
-<div class="sidebar">
-  <button mat-button>Jídlo</button>
-  <button mat-button>Menu</button>
-</div>
+<mat-drawer-container [autosize]="true" class="sidenav" style="height: 10%; background-color: #888888">
+  <mat-drawer mode="side" opened>
+  </mat-drawer>
+  <mat-drawer-content class="content"></mat-drawer-content>
+  <mat-drawer-content class="content">></mat-drawer-content>
+</mat-drawer-container>
 <div class="container2">
   <form [className]="'container'" [formGroup]="form" (ngSubmit)="submitForm()" >
     <mat-form-field>
@@ -10,25 +12,32 @@
         <mat-option *ngFor="let user of usernames" value="{{user.value}}">{{user.username}}</mat-option>
       </mat-select>
     </mat-form-field>
-  <mat-form-field>
-    <mat-label>Obed</mat-label>
-    <mat-select formControlName="lunch" required>
-      <mat-option *ngFor="let lunch of lunchItems" value="{{lunch.value}}">{{lunch.name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Poznámky</mat-label>
-    <textarea matInput formControlName="note"></textarea>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Vyberte datum</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="date" required>
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Obed</mat-label>
+      <mat-select formControlName="lunch" required>
+        <mat-option *ngFor="let lunch of lunchItems" value="{{lunch.value}}">{{lunch.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Poznámky</mat-label>
+      <textarea matInput formControlName="note"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Vyberte datum</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" required>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
     <button  mat-button type="submit" style="margin-bottom: 2rem;" [disabled]="!isFormValid()">{{updateLunch === undefined ? 'Odeslat' : 'Upravit'}}</button>
   </form>
 </div>
 <datera-table [data]="data$ | async" (deleteItem)="onDelete($event)" (editItem)="editRow($event)"></datera-table>
 <button mat-raised-button color="warn" (click)="clearTable()" style="margin-left: 3rem; margin-bottom: 5rem; margin-top: 2rem">Smazat vše</button>
+<mat-drawer-container [autosize]="true" class="sidenav" style="height: 10%; background-color: #888888">
+  <mat-drawer mode="side" opened>
+  </mat-drawer>
+  <mat-drawer-content class="content"></mat-drawer-content>
+</mat-drawer-container>
+
+
