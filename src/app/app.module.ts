@@ -20,12 +20,14 @@ import { TableComponent } from './lunch/components/table/table.component';
 import {RouterModule} from "@angular/router";
 import {CdkMenu, CdkMenuItem} from "@angular/cdk/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LunchComponent,
     TableComponent,
+    HomeComponent,
   ],
   imports: [
     FormsModule,
@@ -43,7 +45,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatTableModule,
     MatSidenavModule,
     RouterModule.forRoot([
-      {path: '', component: AppComponent},
+      {path: '', component: HomeComponent},
       {path: "obed/create", component: LunchComponent}
     ]),
     CdkMenu,
