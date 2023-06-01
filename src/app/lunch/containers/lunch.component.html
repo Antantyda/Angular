@@ -1,3 +1,7 @@
+<div class="sidebar">
+  <button mat-button>Jídlo</button>
+  <button mat-button>Menu</button>
+</div>
 <div class="container2">
   <form [className]="'container'" [formGroup]="form" (ngSubmit)="submitForm()" >
     <mat-form-field>
@@ -23,7 +27,7 @@
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-    <button  mat-button type="submit" style="margin-bottom: 2rem; color: #1976d2" [disabled]="!isFormValid()">{{updateLunch === undefined ? 'Odeslat' : 'Upravit'}}</button>
+    <button  mat-button type="submit" style="margin-bottom: 2rem;" [disabled]="!isFormValid()">{{updateLunch === undefined ? 'Odeslat' : 'Upravit'}}</button>
   </form>
 </div>
 <datera-table [data]="data$ | async" (deleteItem)="onDelete($event)" (editItem)="editRow($event)"></datera-table>

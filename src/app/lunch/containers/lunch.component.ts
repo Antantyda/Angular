@@ -18,7 +18,6 @@ export class LunchComponent implements OnInit {
   lunchItems: LunchModel[] = [];
   usernames: UserModel[] = [];
   form: FormGroup = new FormGroup<any>({});
-
   constructor(
     private lunchService: LunchService,
     private userService: UserService,
@@ -36,7 +35,6 @@ export class LunchComponent implements OnInit {
       lunch: ['', Validators.required],
       note: [''],
     })
-
   }
   submitForm() {
     const userName = this.usernames.find((item) => item.value === +this.form.value.user)?.username as string;
@@ -81,4 +79,5 @@ export class LunchComponent implements OnInit {
   clearTable() {
     this.lunchService.deleteAllLunches();
   }
+
 }

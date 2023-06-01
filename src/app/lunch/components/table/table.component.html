@@ -1,3 +1,4 @@
+
 <table>
   <thead>
   <tr>
@@ -11,14 +12,14 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let entry of data; index as i " [ngClass]="{'blue-row': selectedRowIndex === i}">
+  <tr *ngFor="let entry of data">
     <td>{{entry.id}}</td>
     <td>{{entry.userName}}</td>
     <td>{{entry.lunchName}}</td>
     <td>{{entry.date | date:'dd.MM.yyyy'}}</td>
     <td>{{entry.note}}</td>
     <td><button class="delete-button" type="submit" mat-raised-button color="warn" (click)="onDelete(entry.id)">Odstranit</button></td>
-    <td><button class="delete-button" type="submit" mat-raised-button color="primary" (click)="onEdit(entry.id)">Upravit</button></td>
+    <td><button  type="submit" mat-raised-button color="primary" (click)="onEdit(entry.id)">Upravit</button></td>
   </tr>
   </tbody>
 </table>
