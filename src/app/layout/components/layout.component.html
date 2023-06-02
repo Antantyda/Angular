@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <a routerLink="/" class="example-spacer">Jídelníček</a>
+  <button mat-button>
+    <span>něco</span>
+  </button>
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" class="sidenav" opened>
+    <a class="button" style="text-decoration: none; margin: 2rem; " routerLink="obed" routerLinkActive = "activebutton">Lunch home</a>
+    <a class="button" style="text-decoration: none; margin: 2rem; " routerLink="obed/create" routerLinkActive = "activebutton">Objednat oběd</a>
+    <a class="button" style="text-decoration: none; margin: 2rem; " routerLink="test" routerLinkActive = "activebutton">Test page</a>
+    </mat-drawer>
+  <mat-drawer-content style="width: 100%">
+    <div class="container2">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
