@@ -2,7 +2,8 @@ import {NgModule} from "@angular/core";
 import {LayoutComponent} from "./components/layout.component";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import {RouterLink, RouterOutlet} from "@angular/router";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [LayoutComponent],
@@ -10,7 +11,9 @@ import {RouterLink, RouterOutlet} from "@angular/router";
     MatToolbarModule,
     MatSidenavModule,
     RouterOutlet,
-    RouterLink
+    RouterLink,
+    RouterLinkActive,
+    MatButtonModule
   ],
   exports: [LayoutComponent]
 })

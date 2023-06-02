@@ -12,6 +12,7 @@ import {LunchService} from "./services/lunch.service";
 import {UserService} from "./services/user.service";
 import {LunchHomeComponent} from "./containers/home/lunch-home.component";
 import {CommonModule} from "@angular/common";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -23,16 +24,17 @@ import {CommonModule} from "@angular/common";
     LunchService,
     UserService
   ],
-  imports: [
-    CommonModule,
-    LunchRoutingModule,
-    MatSidenavModule,
-    MatInputModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatToolbarModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ]
+    imports: [
+        CommonModule,
+        LunchRoutingModule,
+        MatSidenavModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatToolbarModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+    ]
 })
 export class LunchModule {}
