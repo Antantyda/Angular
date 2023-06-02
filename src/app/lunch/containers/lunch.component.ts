@@ -18,6 +18,7 @@ export class LunchComponent implements OnInit {
   lunchItems: LunchModel[] = [];
   usernames: UserModel[] = [];
   form: FormGroup = new FormGroup<any>({});
+  selectedRowId: number | null = null;
   constructor(
     private lunchService: LunchService,
     private userService: UserService,
@@ -59,6 +60,7 @@ export class LunchComponent implements OnInit {
   }
 
   editRow(id: number) {
+    this.selectedRowId = id;
     this.updateLunch = this.lunchService.getLunch(id);
     this.form.setValue({
       date: this.updateLunch.date,
@@ -78,6 +80,11 @@ export class LunchComponent implements OnInit {
 
   clearTable() {
     this.lunchService.deleteAllLunches();
+  }
+
+  cancelUpdate() {
+    this.updateLunch = undefined;
+    this.form.reset();
   }
 
 }

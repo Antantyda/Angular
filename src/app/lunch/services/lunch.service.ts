@@ -42,7 +42,6 @@ export class LunchService {
     }
     this.data.splice(index, 1);
     this._data.next(Object.assign([], this.data));
-
   }
 
   updateLunch = (id: number, lunch: SummaryModel) => {

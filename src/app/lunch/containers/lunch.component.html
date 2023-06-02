@@ -1,9 +1,14 @@
-<mat-drawer-container [autosize]="true" class="sidenav" style="height: 10%; background-color: #888888">
-  <mat-drawer mode="side" opened>
+<mat-toolbar>
+  <span class="example-spacer">Jídelníček</span>
+  <button mat-button>
+    <span>něco</span>
+  </button>
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" class="sidenav" opened>
+    <a class="button" style="text-decoration: none; margin: 2rem; " routerLink="" routerLinkActive = "activebutton"><button mat-button>Zpět</button></a>
   </mat-drawer>
-  <mat-drawer-content class="content"></mat-drawer-content>
-  <mat-drawer-content class="content">></mat-drawer-content>
-</mat-drawer-container>
+  <mat-drawer-content style="width: 100%">
 <div class="container2">
   <form [className]="'container'" [formGroup]="form" (ngSubmit)="submitForm()" >
     <mat-form-field>
@@ -29,15 +34,11 @@
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <button  mat-button type="submit" style="margin-bottom: 2rem;" [disabled]="!isFormValid()">{{updateLunch === undefined ? 'Odeslat' : 'Upravit'}}</button>
+    <button  mat-raised-button  type="submit"  style="margin-top: 1rem" [disabled]="!isFormValid()">{{updateLunch === undefined ? 'Odeslat' : 'Upravit'}}</button>
+    <button *ngIf="updateLunch !== undefined" style="margin-top: 1rem" mat-button (click)="cancelUpdate()">Zrušit</button>
   </form>
 </div>
 <datera-table [data]="data$ | async" (deleteItem)="onDelete($event)" (editItem)="editRow($event)"></datera-table>
 <button mat-raised-button color="warn" (click)="clearTable()" style="margin-left: 3rem; margin-bottom: 5rem; margin-top: 2rem">Smazat vše</button>
-<mat-drawer-container [autosize]="true" class="sidenav" style="height: 10%; background-color: #888888">
-  <mat-drawer mode="side" opened>
-  </mat-drawer>
-  <mat-drawer-content class="content"></mat-drawer-content>
+  </mat-drawer-content>
 </mat-drawer-container>
-
-

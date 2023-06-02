@@ -20,7 +20,9 @@ import { TableComponent } from './lunch/components/table/table.component';
 import {RouterModule} from "@angular/router";
 import {CdkMenu, CdkMenuItem} from "@angular/cdk/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './lunch/containers/home/home.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -46,11 +48,13 @@ import { HomeComponent } from './home/home.component';
     MatSidenavModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
-      {path: "obed/create", component: LunchComponent}
+      {path: 'obed/create', component: LunchComponent}
     ]),
     CdkMenu,
     CdkMenuItem,
-    MatSidenavModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [
     LunchService,
